@@ -1,4 +1,4 @@
-import { Movie } from "../../core/use-cases/movies/entitities/movie.entity";
+import { Movie } from "../../core/use-cases/movies/entities/movie.entity";
 import type { Result } from "../interfaces/movie-db.responses";
 
 export class MovieMapper {

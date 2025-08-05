@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Movie } from '../../core/use-cases/movies/entitities/movie.entity';
+import { Movie } from '../../core/use-cases/movies/entities/movie.entity';
 import * as UseCases from '../../core/use-cases';
 import { MovieDBFetcher } from '../../config/adapters/movieDB.adapter';
 export const useMovies = () => {
