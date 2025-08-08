@@ -5,7 +5,7 @@ import {FullMovie} from '../../entities/movie.entity';
 
 export const getMovieByIdUseCase = async (
   fetcher: HttpAdapter,
-  movieId: number,
+  movieId: string | number,
 ): Promise<FullMovie> => {
   try {
     const movie = await fetcher.get<MovieDBMovie>(`/${movieId}`);
