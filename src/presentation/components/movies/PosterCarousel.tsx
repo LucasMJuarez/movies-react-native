@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { Movie } from '../../../core/use-cases/movies/entities/movie.entity'
+import { Movie } from '../../../core/entities/movie.entity'
 import MoviePoster from './MoviePoster';
 
 interface Props{

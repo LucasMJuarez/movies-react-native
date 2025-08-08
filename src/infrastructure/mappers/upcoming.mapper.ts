@@ -1,4 +1,4 @@
-import { Movie } from "../../core/use-cases/movies/entities/movie.entity";
+import { Movie } from "../../core/entities/movie.entity";
 
 
 export class UpcomingMapper {

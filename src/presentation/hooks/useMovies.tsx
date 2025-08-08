@@ -1,27 +1,33 @@
 import { useEffect, useState } from 'react';
-import { Movie } from '../../core/use-cases/movies/entities/movie.entity';
+import { Movie } from '../../core/entities/movie.entity';
 import * as UseCases from '../../core/use-cases';
 import { MovieDBFetcher } from '../../config/adapters/movieDB.adapter';
+
+let popularPage = 1;
+
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [nowPlaying, setNowPlaying] = useState<Movie[]>([]);
   const [upcoming, setUpcoming] = useState<Movie[]>([]);
   const [topRated, setTopRated] = useState<Movie[]>([]);
+  const [popular, setPopular] = useState<Movie[]>([]);
 
   useEffect(() => {
     initialLoad();
   }, []);
 
   const initialLoad = async () => {
-    const [nowPlayingMovies, upcomingMovies, topRatedMovies] =
+    const [nowPlayingMovies, upcomingMovies, topRatedMovies, popularMovies] =
       await Promise.all([
         UseCases.moviesNowPlayingUseCase(MovieDBFetcher),
         UseCases.UpcomingMoviesUseCase(MovieDBFetcher),
         UseCases.TopRatedMoviesUseCase(MovieDBFetcher),
+        UseCases.moviesPopularUseCase(MovieDBFetcher),
       ]);
     setNowPlaying(nowPlayingMovies);
     setUpcoming(upcomingMovies);
     setTopRated(topRatedMovies);
+    setPopular(popularMovies);
     setIsLoading(false);
     console.log(
         {
@@ -37,5 +43,16 @@ export const useMovies = () => {
     nowPlaying,
     upcoming,
     topRated,
+    popular,
+
+    //Methods 
+
+    popularNextPage: async () =>{
+      popularPage++;
+      const popularMovies = await UseCases.moviesPopularUseCase(MovieDBFetcher, {
+        page: popularPage,
+      });
+      setPopular((prev) => [...prev, ...popularMovies]);
+    },
   };
 };
