@@ -9,16 +9,13 @@ interface Options {
 }
 
 export const moviesPopularUseCase = async ( fetcher: HttpAdapter, options?: Options ):Promise<Movie[]> => {
-  
   try {
     const popular = await fetcher.get<MovieDBMoviesResponse>('/popular', {
       params: {
         page: options?.page ?? 1
       }
     });
-
-    return popular.results.map(  MovieMapper.fromMovieDBResultToEntity );
-
+    return popular.results.map(MovieMapper.fromMovieDBResultToEntity );
   } catch (error) {
     console.log(error);
     throw new Error('Error fetching movies - PopularUseCase');
