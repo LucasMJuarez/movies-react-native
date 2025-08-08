@@ -4,6 +4,7 @@ import { useMovies } from '../../hooks/useMovies';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PosterCarousel from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
+import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
 
 const HomeScreen = () => {
 
@@ -12,9 +13,7 @@ const HomeScreen = () => {
 
   if(isLoading){
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Loading...</Text>
-      </View>
+      <FullScreenLoader />
     )
   }
   return (
