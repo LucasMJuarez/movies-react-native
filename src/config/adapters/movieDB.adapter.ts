@@ -1,4 +1,5 @@
 import { AxiosAdapter } from "./http/axios.adapter";
+// import { THE_MOVIE_DB_KEY } from '@env';
 
 export const MovieDBFetcher = new AxiosAdapter({
     baseUrl: 'https://api.themoviedb.org/3/movie',

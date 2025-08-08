@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View, Pressable } from 'react-native';
-import { Movie } from '../../../core/use-cases/movies/entities/movie.entity';
+import { Movie } from '../../../core/entities/movie.entity';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../../navigation/Navigation';
 
